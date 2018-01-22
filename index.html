@@ -22,7 +22,7 @@
 		//Determines which player wins
 		function playRound(playerSelection, computerSelection){
 			let condition = " "
-			if(playerSelection == "rock" || "Rock" || "ROCK"){
+			if(playerSelection == "rock" || playerSelection == "Rock" || playerSelection == "ROCK"){
 				if(computerSelection == "rock"){
 					condition ="Both of you Tie!"
 				}
@@ -33,7 +33,7 @@
 					condition = "You Win!"
 				}
 			}
-			else if(playerSelection == "paper" || "Paper" || "PAPER"){
+			else if(playerSelection == "paper" || playerSelection == "Paper" || playerSelection == "PAPER"){
 				if(computerSelection == "rock"){
 					condition = "You Win!"
 				}
@@ -44,7 +44,7 @@
 					condition = "You Lose!"
 				}
 			}
-			else if(playerSelection == "scissors" || "Scissors" || "SCISSORS"){
+			else if(playerSelection == "scissors" || playerSelection == "Scissors" || playerSelection == "SCISSORS"){
 				if(computerSelection == "rock"){	
 					condition = "You Lose!"
 				}
