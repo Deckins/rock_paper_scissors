@@ -1,0 +1,30 @@
+<DOCTYPE HTML5>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		function computerPlay(){
+			let random = Math.random()
+			let computer = ""
+			if(random <= 0.33){
+				computer="rock" 
+			}
+			else if(random >0.33 && random <= 0.66){
+				computer="paper"	
+			}
+			else{
+				computer="scissors"
+			}
+			return computer
+		}
+		let choice=computerPlay()
+		console.log(choice)
+	//	function play(playerSelection, computerSelection){
+		
+	//	}
+
+	</script>
+</body>
+
+</html>
