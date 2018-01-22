@@ -1,0 +1,70 @@
+<DOCTYPE HTML5>
+<html>
+<head>
+</head>
+<body>
+	<script>
+		//Randomly selects Rock, Paper , or Scissors for the computer
+		function computerPlay(){
+			let random = Math.random()
+			let computer = ""
+			if(random <= 0.33){
+				computer="rock" 
+			}
+			else if(random >0.33 && random <= 0.66){
+				computer="paper"	
+			}
+			else{
+				computer="scissors"
+			}
+			return computer
+		}
+		//Determines which player wins
+		function playRound(playerSelection, computerSelection){
+			let condition = " "
+			if(playerSelection == "rock" || "Rock" || "ROCK"){
+				if(computerSelection == "rock"){
+					condition ="Both of you Tie!"
+				}
+				else if(computerSelection == "paper"){
+					condition = "You Lose!"
+				}
+				else if(computerSelection == "scissors"){
+					condition = "You Win!"
+				}
+			}
+			else if(playerSelection == "aper" || "Paper" || "PAPER"){
+				if(computerSelection == "rock"){
+					condition = "You Win!"
+				}
+				else if(computerSelection =="paper"){
+					condition = "Both of you tie!"
+				}
+				else if(computerSelection == "scissors"){
+					condition = "You Lose!"
+				}
+			}
+			else if(playerSelection == "scissors" || "Scissors" || "SCISSORS"){
+				if(computerSelection == "rock"){	
+					condition = "You Lose!"
+				}
+				else if(computerSelection == "paper"){
+					condition= "You Win!"
+				}
+				else if(computerSelection == "scissors"){
+					condition ="Both of you Tie!"
+				}
+			}
+		return condition		
+		}
+		let playerSelection = prompt("Please Enter 'Rock', 'Paper, or 'Scissors'")
+		let computerSelection = computerPlay()
+		console.log("Player: %s", playerSelection)
+		console.log("Computer: %s", computerSelection)
+		let result = playRound(playerSelection,computerSelection)	
+		console.log(result)
+		
+	</script>
+</body>
+
+</html>
