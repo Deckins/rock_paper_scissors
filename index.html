@@ -1,8 +1,29 @@
 <DOCTYPE HTML5>
 <html>
 <head>
+	<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class ="wrapper">
+	<h3>Rock Paper & Scissors</h3>
+	<ul class="pictures">
+		<li><img src="rock.png"></li>
+		<li><img src="paper.png"></li>
+		<li><img src="scissors.png"></li>
+	</ul>
+   	<div class="buttons">
+    		<button id="Rock">Rock</button>
+		<button id="Paper">Paper</button>
+		<button id="Scissors">Scissors</button>
+	</div>
+	<div class ="container">
+		<li><div id ="player1"></div></li>
+		<li><div id ="player2"></div></li>
+		<li><div id ="tied"></div></li>
+	</div>
+		<div id="results">
+		</div>
+</div>
 	<script>
 		//Randomly selects Rock, Paper , or Scissors for the computer
 		function computerPlay(){
@@ -11,7 +32,7 @@
 			if(random <= 0.33){
 				computer="rock" 
 			}
-			else if(random >0.33 && random <= 0.66){
+			else if(random <= 0.66){
 				computer="paper"	
 			}
 			else{
@@ -25,12 +46,15 @@
 			if(playerSelection == "rock" || playerSelection == "Rock" || playerSelection == "ROCK"){
 				if(computerSelection == "rock"){
 					condition ="Both of you Tie!"
+					console.log("Both of you Tie!")
 				}
 				else if(computerSelection == "paper"){
 					condition = "You Lose!"
+					console.log("You Lose!")
 				}
 				else if(computerSelection == "scissors"){
 					condition = "You Win!"
+					console.log("You Win!")
 				}
 			}
 			else if(playerSelection == "paper" || playerSelection == "Paper" || playerSelection == "PAPER"){
@@ -60,10 +84,10 @@
 		function game(){
 			let playerPoints = 0
 			let compPoints = 0
-			for(let i=0;i<5;i++){
+		//	for(let i=0;i<5;i++){
 				let playerSelection = prompt("Please Enter 'Rock', 'Paper, or 'Scissors'")
 				let computerSelection = computerPlay()
-				console.log("---Game %d---",i+1)
+				//console.log("---Game %d---",i+1)
 				console.log("Player: %s", playerSelection)
 				console.log("Computer: %s", computerSelection)
 				let result = playRound(playerSelection,computerSelection)	
@@ -77,7 +101,7 @@
 				console.log("Player Points: %d", playerPoints)
 				console.log("Computer Points: %d" , compPoints)
 				console.log("--------------")
-			}	
+			//}	
 			if(playerPoints > compPoints){
 				console.log("Congratulations, You Win!")
 			}
@@ -89,7 +113,32 @@
 			}
 
 		}
-		game()
+		const buttons = document.querySelectorAll('button');
+		let playerPoints = 0;
+		let computerPoints = 0;
+		let tied = 0;
+		buttons.forEach((button) => {
+			button.addEventListener('click', (e) => {
+				let choice = button.textContent;
+				if(playRound(choice, computerPlay()) == "You Win!"){
+					document.getElementById("results").textContent = "Player has won!";
+					playerPoints++;
+				}else if(playRound(choice, computerPlay()) == "You Lose!"){
+					document.getElementById("results").textContent = "Computer has won!";
+					computerPoints++;
+				}
+				else{
+					document.getElementById("results").textContent = "Both have Tied!";
+					tied++;
+				}
+								
+				document.getElementById("player1").textContent = "Player Points: " + playerPoints;
+				document.getElementById("player2").textContent = "Computer Points: " 
+				+ computerPoints;
+				document.getElementById("tied").textContent = "Draw: " + tied;
+			});
+		});
+		 
 	</script>
 </body>
 </html>
