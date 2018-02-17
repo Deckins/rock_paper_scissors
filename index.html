@@ -7,9 +7,7 @@
 <div class ="wrapper">
 	<h3>Rock Paper & Scissors</h3>
 	<ul class="pictures">
-		<li><img src="rock.png"></li>
-		<li><img src="paper.png"></li>
-		<li><img src="scissors.png"></li>
+		<li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-l7V6L7aIdMy-gbsMyoKjrcuAo3Ivhbl7TY0HX_lGYzzQaRviWw"></li>
 	</ul>
    	<div class="buttons">
     		<button id="Rock">Rock</button>
@@ -120,6 +118,21 @@
 		buttons.forEach((button) => {
 			button.addEventListener('click', (e) => {
 				let choice = button.textContent;
+				switch(playRound(choice,computerPlay()))
+				{
+					case "You Win!":
+						document.getElementById('results').textContent = "Player has won!";
+						playerPoints++;
+						break;
+					case "You Lose!":
+						document.getElementById('results').textContent = "Computer has won!";						    computerPoints++;
+						break;
+					default:
+						document.getElementById('results').textContent = "Both have Tied!";						    tied++;
+						break;
+
+				}
+				/*
 				if(playRound(choice, computerPlay()) == "You Win!"){
 					document.getElementById("results").textContent = "Player has won!";
 					playerPoints++;
@@ -131,7 +144,7 @@
 					document.getElementById("results").textContent = "Both have Tied!";
 					tied++;
 				}
-								
+				*/				
 				document.getElementById("player1").textContent = "Player Points: " + playerPoints;
 				document.getElementById("player2").textContent = "Computer Points: " 
 				+ computerPoints;
